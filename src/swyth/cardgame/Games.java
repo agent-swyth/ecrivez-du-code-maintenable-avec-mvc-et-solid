@@ -1,4 +1,4 @@
-package swyth.cardgame.games;
+package swyth.cardgame;
 
 import swyth.cardgame.controller.GameController;
 import swyth.cardgame.model.Deck;
