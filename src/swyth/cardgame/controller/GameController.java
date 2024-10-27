@@ -1,5 +1,6 @@
 package swyth.cardgame.controller;
 
+import swyth.cardgame.games.GameEvaluator;
 import swyth.cardgame.model.Deck;
 import swyth.cardgame.model.Player;
 import swyth.cardgame.model.PlayingCard;
@@ -80,36 +81,7 @@ public class GameController {
     }
 
     void evaluateWinner() {
-        Player bestPlayer = null;
-        int bestRank = -1;
-        int bestSuit = -1;
-
-        for (Player player : players) {
-            boolean newBestPlayer = false;
-
-            if (bestPlayer == null) {
-                newBestPlayer = true;
-            } else {
-                PlayingCard playingCard = player.getCardFromHand();
-                int thisRank = playingCard.getRank().value();
-                if (thisRank >= bestRank) {
-                    newBestPlayer = true;
-                } else {
-                    if (playingCard.getSuit().value() > bestSuit) {
-                        newBestPlayer = true;
-                    }
-                }
-            }
-
-            if (newBestPlayer) {
-                bestPlayer = player;
-                PlayingCard playingCard = player.getCardFromHand();
-                bestRank = playingCard.getRank().value();
-                bestSuit = playingCard.getSuit().value();
-            }
-        }
-
-        winner = bestPlayer;
+        winner = new GameEvaluator().evaluateWinner(players);
     }
 
     void displayWinner() {
