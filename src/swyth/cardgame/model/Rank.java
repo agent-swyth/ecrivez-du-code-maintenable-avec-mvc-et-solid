@@ -1,6 +1,7 @@
 package swyth.cardgame.model;
 
 public enum Rank {
+    JOKER(0),
     TWO (2),
     THREE (3),
     FOUR (4),

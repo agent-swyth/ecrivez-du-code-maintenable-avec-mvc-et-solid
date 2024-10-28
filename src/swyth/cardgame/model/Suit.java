@@ -1,7 +1,7 @@
 package swyth.cardgame.model;
 
 public enum Suit {
-    DIAMONDS (1), HEARTS (2), SPADES (3), CLUBS (4);
+    JOKER(0), DIAMONDS (1), HEARTS (2), SPADES (3), CLUBS (4);
 
     private int suit;
 
