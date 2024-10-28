@@ -4,7 +4,7 @@ import swyth.cardgame.games.GameEvaluator;
 import swyth.cardgame.model.Deck;
 import swyth.cardgame.model.Player;
 import swyth.cardgame.model.PlayingCard;
-import swyth.cardgame.view.View;
+import swyth.cardgame.view.GameViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ public class GameController {
     Deck deck;
     List<Player> players;
     Player winner;
-    View view;
+    GameViewable view;
 
     GameState gameState;
     GameEvaluator gameEvaluator;
 
-    public GameController(Deck deck, View view, GameEvaluator gameEvaluator) {
+    public GameController(Deck deck, GameViewable view, GameEvaluator gameEvaluator) {
         this.view = view;
         this.deck = deck;
         players = new ArrayList<>();
