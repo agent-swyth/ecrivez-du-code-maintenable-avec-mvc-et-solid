@@ -21,13 +21,15 @@ public class GameController {
     View view;
 
     GameState gameState;
+    GameEvaluator gameEvaluator;
 
-    public GameController(Deck deck, View view) {
+    public GameController(Deck deck, View view, GameEvaluator gameEvaluator) {
         this.view = view;
         this.deck = deck;
         players = new ArrayList<>();
         this.gameState = GameState.AddingPLayers;
         view.setController(this);
+        this.gameEvaluator = gameEvaluator;
     }
 
     public void run() {
@@ -81,7 +83,7 @@ public class GameController {
     }
 
     void evaluateWinner() {
-        winner = new GameEvaluator().evaluateWinner(players);
+        winner = gameEvaluator.evaluateWinner(players);
     }
 
     void displayWinner() {
