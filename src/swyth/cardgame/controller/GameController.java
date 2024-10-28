@@ -95,4 +95,16 @@ public class GameController {
             deck.returnCardToDeck(player.removeCardFromHand());
         }
     }
+
+    void exitGame() {
+        System.exit(0);
+    }
+
+    public void nextAction(String nextChoice) {
+        if ("+q".equals(nextChoice)) {
+            exitGame();
+        } else {
+            startGame();
+        }
+    }
 }
