@@ -1,9 +1,7 @@
 package swyth.cardgame.controller;
 
 import swyth.cardgame.games.GameEvaluator;
-import swyth.cardgame.model.Deck;
-import swyth.cardgame.model.Player;
-import swyth.cardgame.model.PlayingCard;
+import swyth.cardgame.model.*;
 import swyth.cardgame.view.GameViewable;
 
 import java.util.ArrayList;
@@ -16,8 +14,8 @@ public class GameController {
     }
 
     Deck deck;
-    List<Player> players;
-    Player winner;
+    List<IPlayer> players;
+    IPlayer winner;
     GameViewable view;
 
     GameState gameState;
@@ -58,7 +56,7 @@ public class GameController {
         if (gameState != GameState.CardsDealt) {
             deck.shuffle();
             int playerIndex = 1;
-            for (Player player : players) {
+            for (IPlayer player : players) {
                 player.addCardToHand(deck.removeTopCard());
                 view.showFaceDownCardForPlayer(playerIndex++, player.getName());
             }
@@ -69,7 +67,7 @@ public class GameController {
 
     public void flipCards() {
         int playerIndex = 1;
-        for (Player player : players) {
+        for (IPlayer player : players) {
             PlayingCard playingCard = player.getCardFromHand();
             playingCard.flip();
             view.showCardForPlayer(playerIndex++, player.getName(), playingCard.getRank().toString(), playingCard.getSuit().toString());
@@ -83,7 +81,7 @@ public class GameController {
     }
 
     void evaluateWinner() {
-        winner = gameEvaluator.evaluateWinner(players);
+        winner = new WinningPlayer(gameEvaluator.evaluateWinner(players));
     }
 
     void displayWinner() {
@@ -91,7 +89,7 @@ public class GameController {
     }
 
     void rebuildDeck() {
-        for (Player player : players) {
+        for (IPlayer player : players) {
             deck.returnCardToDeck(player.removeCardFromHand());
         }
     }

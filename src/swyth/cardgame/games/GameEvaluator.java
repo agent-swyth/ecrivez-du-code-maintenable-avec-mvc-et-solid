@@ -1,11 +1,11 @@
 package swyth.cardgame.games;
 
-import swyth.cardgame.model.Player;
+import swyth.cardgame.model.IPlayer;
 
 import java.util.List;
 
 public interface GameEvaluator {
-    public Player evaluateWinner(List<Player> winners);
+    public IPlayer evaluateWinner(List<IPlayer> winners);
 }
 
 

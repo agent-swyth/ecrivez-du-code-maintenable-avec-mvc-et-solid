@@ -1,6 +1,6 @@
 package swyth.cardgame.games;
 
-import swyth.cardgame.model.Player;
+import swyth.cardgame.model.IPlayer;
 import swyth.cardgame.model.PlayingCard;
 
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.List;
 public class LowCardGameEvaluator implements GameEvaluator {
 
     @Override
-    public Player evaluateWinner(List<Player> players) {
-        Player bestPlayer = null;
+    public IPlayer evaluateWinner(List<IPlayer> players) {
+        IPlayer bestPlayer = null;
         int bestRank = -1;
         int bestSuit = -1;
 
-        for (Player player : players) {
+        for (IPlayer player : players) {
             boolean newBestPlayer = false;
 
             if (bestPlayer == null) {

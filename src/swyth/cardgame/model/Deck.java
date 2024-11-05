@@ -5,20 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Deck {
-    private final ArrayList<PlayingCard> cards;
-
-    public Deck() {
-        this.cards = new ArrayList<PlayingCard>();
-        for (Rank rank : Rank.values()) {
-            for (Suit suit : Suit.values()) {
-                cards.add(new PlayingCard(rank, suit));
-                System.out.println("Creating Card [" + rank + ", " + suit + "]");
-            }
-        }
-
-        shuffle();
-    }
+public abstract class Deck {
+    protected List<PlayingCard> cards;
 
     public void shuffle() {
         Random rand = new Random();
